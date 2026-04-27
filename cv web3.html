@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="Cv web2.css">
+  <title>Juan Bautista Cabral | CV Web</title>
+  <style>
+    :root {
+    --bg: #1d2a0f;
+    --bg-soft: #111c35;
+    --card: rgba(255, 255, 255, 0.08);
+    --card-strong: rgba(255, 255, 255, 0.12);
+    --text: #e5eefb;
+    --muted: #b9c6de;
+    --accent: #7dd3fc;
+    --accent-2: #a78bfa;
+    --accent-3: #34d399;
+    --border: rgba(255, 255, 255, 0.12);
+    --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+    --radius: 24px;
+    --radius-sm: 16px;
+    --max: 1180px;
+  }
+
+  body.light {
+    --bg: #587eb1;
+    --bg-soft: #ffffff;
+    --card: rgba(255, 255, 255, 0.95);
+    --card-strong: rgba(255, 255, 255, 1);
+    --text: #11203a;
+    --muted: #52627f;
+    --accent: #2563eb;
+    --accent-2: #7c3aed;
+    --accent-3: #059669;
+    --border: rgba(17, 32, 58, 0.1);
+    --shadow: 0 20px 60px rgba(17, 32, 58, 0.12);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(circle at top left, rgba(10, 129, 50, 0.18), transparent 28%),
+      radial-gradient(circle at top right, rgba(167, 139, 250, 0.16), transparent 26%),
+      linear-gradient(180deg, #09111f 0%, #0b1220 45%, #0f172a 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background 0.35s ease, color 0.35s ease;
+  }
+
+  body.light {
+    background:
+      radial-gradient(circle at top left, rgba(32, 230, 187, 0.09), transparent 28%),
+      radial-gradient(circle at top right, rgba(42, 209, 65, 0.08), transparent 26%),
+      linear-gradient(180deg, #eef4ff 0%, #0c7c0c 48%, #89e090 100%);
+  }
+
+  .noise {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: linear-gradient(180deg, rgba(0,0,0,0.8), transparent 90%);
+  }
+
+  body.light .noise {
+    opacity: 0.03;
+  }
+
+  .container {
+    width: min(100% - 32px, var(--max));
+    margin: 0 auto;
+    padding: 28px 0 64px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .avatar {
+    width: 58px;
+    height: 58px;
+    border-radius: 18px;
+    background:
+      linear-gradient(135deg, rgba(125, 211, 252, 0.9), rgba(99, 240, 158, 0.9));
+    display: grid;
+    place-items: center;
+    box-shadow: var(--shadow);
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: #08111f;
+    font-size: 1.05rem;
+    flex-shrink: 0;
+  }
+
+  .brand h1 {
+    margin: 0;
+    font-size: 1.05rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .brand p {
+    margin: 4px 0 0;
+    font-size: 0.96rem;
+    color: var(--text);
+  }
+
+  .pill {
+    border: 1px solid var(--border);
+    background: rgba(82, 163, 62, 0.06);
+    padding: 12px 16px;
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 0.92rem;
+    backdrop-filter: blur(10px);
+  }
+
+  .actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    appearance: none;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text);
+    border-radius: 999px;
+    padding: 11px 15px;
+    cursor: pointer;
+    font: inherit;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .btn.primary {
+    background: linear-gradient(135deg, rgba(125, 211, 252, 0.95), rgba(167, 139, 250, 0.95));
+    color: #08111f;
+    border-color: transparent;
+    font-weight: 700;
+  }
+
+  .hero {
+    position: relative;
+    border: 1px solid var(--border);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255,255,255,0.06)),
+      radial-gradient(circle at 20% 20%, rgba(125, 211, 252, 0.18), transparent 25%),
+      radial-gradient(circle at 80% 0%, rgba(167, 139, 250, 0.16), transparent 26%),
+      rgba(8, 15, 29, 0.72);
+    border-radius: 34px;
+    box-shadow: var(--shadow);
+    padding: 34px;
+    overflow: hidden;
+    backdrop-filter: blur(14px);
+  }
+
+  body.light .hero,
+  body.light .card,
+  body.light .profile-box,
+  body.light .contact-card,
+  body.light .timeline-item,
+  body.light .list-item,
+  body.light .stat,
+  body.light .pill,
+  body.light .btn {
+    background: var(--card);
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: auto -80px -120px auto;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(52, 211, 153, 0.14), transparent 65%);
+    filter: blur(8px);
+  }
+
+  .hero-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.45fr 0.95fr;
+    gap: 26px;
+    align-items: start;
+  }
+
+  .hero h2 {
+    margin: 0;
+    font-size: clamp(2.1rem, 4vw, 4.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+  }
+
+  .hero h2 span {
+    display: block;
+    margin-top: 10px;
+    color: var(--accent);
+    font-size: 0.48em;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .subtitle {
+    margin: 18px 0 0;
+    font-size: 1.04rem;
+    line-height: 1.8;
+    color: var(--muted);
+    max-width: 62ch;
+  }
+
+  .contact-grid {
+    display: grid;
+    gap: 12px;
+    margin-top: 26px;
+  }
+
+  .contact-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: rgba(60, 216, 60, 0.06);
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .contact-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(2, 13, 19, 0.35);
+  }
+
+  .contact-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    font-size: 1.1rem;
+    background: linear-gradient(135deg, rgba(125,211,252,0.25), rgba(135, 255, 219, 0.25));
+  }
+
+  .contact-card strong {
+    display: block;
+    font-size: 0.86rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 3px;
+  }
+
+  .contact-card span {
+    color: var(--text);
+    font-size: 0.98rem;
+    word-break: break-word;
+  }
+
+  .hero-side {
+    display: grid;
+    gap: 16px;
+  }
+
+  .profile-box {
+    border-radius: var(--radius);
+    padding: 22px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .profile-box h3,
+  .section-title {
+    margin: 0 0 12px;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .profile-box p {
+    margin: 0 0 10px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .imagen{ 
+  width: 330px;
+  height: 330px;
+  border-radius: 50%;
+  object-fit: cover; 
+  object-position: center;
+  border: 3px solid var(--accent);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+  .stat {
+    border-radius: 20px;
+    padding: 18px 14px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.05);
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .stat .num {
+    display: block;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .stat .label {
+    font-size: 0.83rem;
+    color: var(--muted);
+    line-height: 1.3;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 22px;
+    margin-top: 22px;
+  }
+
+  .card {
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: var(--shadow);
+    padding: 24px;
+    backdrop-filter: blur(10px);
+  }
+
+  .card + .card {
+    margin-top: 22px;
+  }
+
+  .card p {
+    color: var(--muted);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .section-header h3 {
+    margin: 0;
+    font-size: 1.45rem;
+    letter-spacing: -0.02em;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border-radius: 999px;
+    background: rgba(125, 211, 252, 0.12);
+    border: 1px solid rgba(125, 211, 252, 0.18);
+    color: var(--text);
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  .timeline,
+  .list-stack {
+    display: grid;
+    gap: 14px;
+  }
+
+  .timeline-item,
+  .list-item {
+    position: relative;
+    padding: 18px 18px 18px 20px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .timeline-item::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 22px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    box-shadow: 0 0 0 6px rgba(125, 211, 252, 0.1);
+  }
+
+  .timeline-item h4,
+  .list-item h4 {
+    margin: 0 0 8px;
+    font-size: 1.02rem;
+    color: var(--text);
+  }
+
+  .timeline-item .meta,
+  .list-item .meta {
+    font-size: 0.86rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .timeline-item p,
+  .list-item p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  .skills {
+    display: grid;
+    gap: 14px;
+  }
+
+  .skill {
+    display: grid;
+    gap: 8px;
+  }
+
+  .skill-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--text);
+    font-size: 0.95rem;
+  }
+
+  .bar {
+    height: 12px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .bar > span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    width: var(--level, 50%);
+    background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+    box-shadow: 0 0 18px rgba(125, 211, 252, 0.25);
+    transform-origin: left center;
+    animation: grow 1.4s ease forwards;
+  }
+
+  @keyframes grow {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .chip {
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.05);
+    color: var(--text);
+    font-size: 0.92rem;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .chip:hover {
+    transform: translateY(-2px) scale(1.01);
+    background: rgba(125, 211, 252, 0.14);
+  }
+
+  .footer {
+    margin-top: 22px;
+    text-align: center;
+    color: rgba(185, 198, 222, 0.85);
+    font-size: 0.9rem;
+    padding: 12px 0 0;
+  }
+
+  .highlight {
+    color: var(--text);
+    font-weight: 700;
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: 0.7s ease;
+  }
+
+  .fade-up.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .accordion {
+    overflow: hidden;
+  }
+
+  .accordion-btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    background: transparent;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+
+  .accordion.open .accordion-content {
+    max-height: 500px;
+    margin-top: 10px;
+  }
+
+  .accordion .chev {
+    transition: transform 0.25s ease;
+    color: var(--accent);
+  }
+
+  .accordion.open .chev {
+    transform: rotate(180deg);
+  }
+
+  .toast {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 30;
+    background: rgba(17, 24, 39, 0.95);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 14px 16px;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    max-width: 320px;
+    opacity: 0;
+    transform: translateY(14px);
+    pointer-events: none;
+    transition: 0.3s ease;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 980px) {
+    .hero-grid,
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .container {
+      width: min(100% - 20px, var(--max));
+      padding-top: 16px;
+    }
+
+    .hero,
+    .card {
+    padding: 20px;
+    border-radius: 22px;
+    }
+
+    .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    }
+
+    .mini-stats {
+    grid-template-columns: 1fr;
+    }
+
+    .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    }
+}
+
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+
+  <main class="container">
+    <header class="topbar fade-up">
+      <div class="brand">
+        <div class="avatar">JBC</div>
+        <div>
+          <h1>Currículum Vitae</h1>
+          <p>Diseño de Curriculum Vitae Web</p>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn" id="themeToggle" type="button">🌙 Modo</button>
+        <button class="btn" id="expandAll" type="button">↕ Ver todo</button>
+        <button class="btn primary" id="printBtn" type="button">🖨 Imprimir</button>
+      </div>
+    </header>
+
+    <section class="hero fade-up" id="inicio">
+      <div class="hero-grid">
+        <div>
+          <h2>
+            Juan Bautista Cabral
+            <span>Estudiante de secundaria</span>
+          </h2>
+          <p class="subtitle">
+            Estoy disponible para formar parte de un equipo, poniendo en práctica mis habilidades y manteniendo una actitud abierta a nuevos aprendizajes. Me interesa el trabajo colaborativo, el desarrollo académico y la participación en experiencias formativas que me permitan crecer personal y profesionalmente.
+          </p>
+
+          <div class="contact-grid">
+            <div class="contact-card" data-copy="341-610-1517">
+              <div class="contact-icon">📞</div>
+              <div>
+                <strong>Teléfono</strong>
+                <span>341 - 610 - 1517</span>
+              </div>
+            </div>
+            <div class="contact-card" data-copy="juanbaucabral@gmail.com">
+              <div class="contact-icon">✉️</div>
+              <div>
+                <strong>Email</strong>
+                <span>juanbaucabral@gmail.com</span>
+              </div>
+            </div>
+            <div class="contact-card" data-copy="Minerva 3353, Rosario, Argentina">
+              <div class="contact-icon">📍</div>
+              <div>
+                <strong>Ubicación</strong>
+                <span>Minerva 3353, Rosario, Argentina</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-side">
+          <div class="profile-box">
+            <h3>Datos personales</h3>
+            <p><span class="highlight">Fecha de nacimiento:</span> 02/01/09</p>
+            <p><span class="highlight">DNI:</span> 49201985</p>
+            <p><span class="highlight">Perfil:</span> estudiante con interés en ciencias, y tecnología.</p>
+          </div>
+          <img class="imagen" src="../WhatsApp Image 2026-04-19 at 15.57.26 (1).jpeg">
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div>
+        <article class="card fade-up">
+          <div class="section-header">
+            <h3>Acerca de mí</h3>
+            <span class="tag">Perfil personal</span>
+          </div>
+          <p>
+            Soy una persona colaboradora, disciplinada, creativa, práctica, eficiente, dedicada y observadora. Me gusta trabajar con responsabilidad, aprender cosas nuevas y participar en actividades que exijan compromiso, organización y adaptación. Me considero alguien con interés por las ciencias, el uso de herramientas tecnológicas y el trabajo en equipo.
+          </p>
+        </article>
+
+        <article class="card fade-up accordion open" id="formacion">
+          <div class="section-header">
+            <button class="accordion-btn" type="button">
+              <h3>Formación</h3>
+              <span class="chev">⌄</span>
+            </button>
+            <span class="tag">Trayectoria educativa</span>
+          </div>
+          <div class="accordion-content" style="max-height: 500px;">
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="meta">Estudiante de secundario</div>
+                <h4>Complejo Educativo Bicultural Edmondo di Amicis - Nro. 3102</h4>
+                <p>
+                  Cursando 5to año en la modalidad de Economía y Administración de Empresas. Integrante del Cuadro de Honor y Escolta de la Bandera Italiana.
+                </p>
+              </div>
+              <div class="timeline-item">
+                <div class="meta">Certificación</div>
+                <h4>Cambridge First Certificate in English (FCE)</h4>
+                <p>
+                  Certificación de inglés en nivel B2, orientada al desarrollo de competencias lingüísticas y comunicación académica.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card fade-up accordion open" id="experiencia">
+          <div class="section-header">
+            <button class="accordion-btn" type="button">
+              <h3>Experiencia y participación académica</h3>
+              <span class="chev">⌄</span>
+            </button>
+            <span class="tag">Actividades destacadas</span>
+          </div>
+          <div class="accordion-content" style="max-height: 900px;">
+            <div class="list-stack">
+              <div class="list-item">
+                <h4>A.C.I.A.U. — Asociación de Colegios Italianos de Argentina y Uruguay</h4>
+                <p>Participación en actividades institucionales y formativas vinculadas a la comunidad educativa italiana.</p>
+              </div>
+              <div class="list-item">
+                <h4>Programa Uniendo Metas — Modelo de Naciones Unidas</h4>
+                <p>Participante en 2024 y 2025. En 2025 recibió mención por Mérito a la Participación Activa como Delegación Observadora, los días 3, 4 y 5 de octubre.</p>
+              </div>
+              <div class="list-item">
+                <h4>Concurso de Biología</h4>
+                <p>Ganador del 3er puesto en el concurso de Biología sobre el tópico “Biorremediación” en 2022.</p>
+              </div>
+              <div class="list-item">
+                <h4>Encuentro anual de ACIAU</h4>
+                <p>Participación en el gran encuentro anual de ACIAU en octubre de 2022, en el predio La Colonia del Banco de la Provincia, Tanti, Córdoba.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div>
+        <article class="card fade-up accordion open" id="habilidades">
+          <div class="section-header">
+            <button class="accordion-btn" type="button">
+              <h3>Habilidades y competencias</h3>
+              <span class="chev">⌄</span>
+            </button>
+            <span class="tag">Capacidades</span>
+          </div>
+          <div class="accordion-content" style="max-height: 800px;">
+            <div class="skills">
+              <div class="skill">
+                <div class="skill-top"><span>Gestión de equipos</span>
+              </div>
+              <div class="skill">
+                <div class="skill-top"><span>Resolución de problemas</span>
+              </div>
+              <div class="skill">
+                <div class="skill-top"><span>Herramientas tecnológicas y Office</span>
+              </div>
+              <div class="skill">
+                <div class="skill-top"><span>HTML y CSS básicos</span>
+              </div>
+              <div class="skill">
+                <div class="skill-top"><span>Interés por las ciencias</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card fade-up accordion open" id="idiomas">
+          <div class="section-header">
+            <button class="accordion-btn" type="button">
+              <h3>Idiomas</h3>
+              <span class="chev">⌄</span>
+            </button>
+            <span class="tag">Lenguas</span>
+          </div>
+          <div class="accordion-content" style="max-height: 600px;">
+            <div class="list-stack">
+              <div class="list-item">
+                <h4>Español</h4>
+                <p>Nativo.</p>
+              </div>
+              <div class="list-item">
+                <h4>Inglés</h4>
+                <p>Nivel B2 — First Certificate in English.</p>
+              </div>
+              <div class="list-item">
+                <h4>Italiano</h4>
+                <p>Nivel intermedio.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card fade-up accordion open" id="hobbies">
+          <div class="section-header">
+            <button class="accordion-btn" type="button">
+              <h3>Hobbies</h3>
+              <span class="chev">⌄</span>
+            </button>
+            <span class="tag">Intereses personales</span>
+          </div>
+          <div class="accordion-content" style="max-height: 260px;">
+            <div class="chips">
+              <span class="chip">Lectura</span>
+              <span class="chip">Música</span>
+              <span class="chip">Actividad física</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card fade-up accordion open" id="valores">
+          <div class="section-header">
+            <button class="accordion-btn" type="button">
+              <h3>Valores personales</h3>
+              <span class="chev">⌄</span>
+            </button>
+            <span class="tag">Rasgos</span>
+          </div>
+          <div class="accordion-content" style="max-height: 260px;">
+            <div class="chips">
+              <span class="chip">Colaborador</span>
+              <span class="chip">Disciplinado</span>
+              <span class="chip">Creativo</span>
+              <span class="chip">Práctico</span>
+              <span class="chip">Eficiente</span>
+              <span class="chip">Dedicado</span>
+              <span class="chip">Observador</span>
+            </div>
+          </div>
+        </article>
+        <article class="aclaration-tag">
+            <div class="aclaration-tag">
+              <span class="aclaration-tag-text"> <u>Aclaraciòn: esta pagina de CV Web fue desarrollada por Juan Bautista Cabral, utilizando parte de sus conocimientos basicos de HTML, CSS y experiencìa con la Inteligencia Artificial.</u></span>
+            </div>
+            <div class="accordion-content" style="max-height: 260px;">
+            </div>
+          </article>
+      </div>
+    </section>
+    
+
+    <div class="footer fade-up">
+    </div>
+  </main>
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    document.body.appendChild(toast);
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+    }
+
+    function animateCounter(el, target) {
+      const num = el.querySelector('.num');
+      const duration = 1200;
+      const start = performance.now();
+
+      function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        num.textContent = Math.floor(progress * target);
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.bar > span').forEach((bar, index) => {
+        bar.style.animationDelay = `${index * 120}ms`;
+      });
+
+      document.querySelectorAll('.stat[data-target]').forEach((stat) => {
+        animateCounter(stat, parseInt(stat.dataset.target, 10));
+      });
+    });
+
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      themeToggle.textContent = document.body.classList.contains('light') ? '☀️ Modo' : '🌙 Modo';
+      showToast(document.body.classList.contains('light') ? 'Modo claro activado' : 'Modo oscuro activado');
+    });
+
+    document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+    document.getElementById('expandAll').addEventListener('click', () => {
+      const accordions = document.querySelectorAll('.accordion');
+      const anyClosed = [...accordions].some((a) => !a.classList.contains('open'));
+      accordions.forEach((a) => a.classList.toggle('open', anyClosed));
+      document.getElementById('expandAll').textContent = anyClosed ? '↕ Ocultar' : '↕ Ver todo';
+      showToast(anyClosed ? 'Se expandieron las secciones' : 'Se ocultaron las secciones');
+    });
+
+    document.querySelectorAll('.accordion').forEach((acc) => {
+      const btn = acc.querySelector('.accordion-btn');
+      btn.addEventListener('click', () => {
+        acc.classList.toggle('open');
+      });
+    });
+
+    document.querySelectorAll('.contact-card').forEach((card) => {
+      card.addEventListener('click', async () => {
+        const value = card.dataset.copy;
+        try {
+          await navigator.clipboard.writeText(value);
+          showToast(`Copiado: ${value}`);
+        } catch {
+          showToast('No se pudo copiar el dato');
+        }
+      });
+    });
+
+    document.querySelectorAll('.chip').forEach((chip) => {
+      chip.addEventListener('click', () => {
+        showToast(`Hobby/valor seleccionado: ${chip.textContent}`);
+      });
+    });
+  </script>
+</body>
+</html>
